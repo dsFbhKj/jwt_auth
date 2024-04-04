@@ -6,12 +6,13 @@ export default async function Profile() {
   let user = session?.user
 //   console.log(session)
   console.log(user)
+  if(!user){redirect('/')}
   return (
     <section>
       <h1>Hello {user.name}</h1>
       <h3>User Information</h3>
       <div>
-        <h4>Email {user.email}</h4>
+        <h4>Email: {user.email}</h4>
       </div>
       <form action={async (formdata)=>{
         'use server'
@@ -21,8 +22,8 @@ export default async function Profile() {
         
         <button type="submit">Logout</button>
       </form>
-      <pre>{JSON.stringify(session,null,2)}</pre>
-      <pre>{user.name `1`}</pre>
+      {/* <pre>{JSON.stringify(session,null,2)}</pre>
+      <pre>{user.name `1`}</pre> */}
     </section>
   )
 }

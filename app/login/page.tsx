@@ -8,7 +8,12 @@ export default async function Login() {
       <form action={async (formdata)=>{
         'use server'
         await login(formdata)
-        redirect('/profile')
+        let user = session?.user
+        if({user}){
+          redirect('/')
+        }else{
+          alert('Login failed')
+        }
       }}>
         <input type="email" name="email" id="email" />
         <input type="password" name="password" id="password" />
@@ -18,7 +23,7 @@ export default async function Login() {
       <form action={async (formdata)=>{
         'use server'
         await logout()
-        redirect('/')
+        redirect('/login')
       }}>
         <button type="submit">Logout</button>
       </form>
