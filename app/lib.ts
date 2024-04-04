@@ -23,8 +23,8 @@ export async function decrypt(input: string): Promise<any> {
 
 export async function login (formData: FormData){
     //verify credientials and get the user
-    const user = { email: formData.get('email'), password: formData.get('password')};
-    
+    const user = { email: formData.get('email'), password: formData.get('password'), name:'John'};
+
      if(user.email !== process.env.USER_EMAIL || user.password !== process.env.USER_PASSWORD){
         return false;
         

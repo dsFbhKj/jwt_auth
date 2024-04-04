@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import {getSession, logout} from '../lib'
+import '../styles/Main.module.css';
 
 export default async function Profile() {
   const session = await getSession();

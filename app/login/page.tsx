@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-import {getSession, login, logout} from '../lib'
+import {getSession, login} from '../lib'
+import '../styles/Login.module.css';
 
 export default async function Login() {
   const session = await getSession();
@@ -9,24 +10,15 @@ export default async function Login() {
         'use server'
         await login(formdata)
         let user = session?.user
-        if({user}){
+        if(user){
           redirect('/')
-        }else{
-          alert('Login failed')
-        }
+        }else {console.log('Login failed')}
       }}>
-        <input type="email" name="email" id="email" />
-        <input type="password" name="password" id="password" />
+        <input type="email" name="email" id="email" autoComplete="email"/>
+        <input type="password" name="password" id="password" autoComplete="password"/>
         <button type="submit">Login </button>
       </form>
 
-      <form action={async (formdata)=>{
-        'use server'
-        await logout()
-        redirect('/login')
-      }}>
-        <button type="submit">Logout</button>
-      </form>
       {/* <pre>{JSON.stringify(session,null,2)}</pre> */}
     </section>
   );
