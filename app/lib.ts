@@ -11,7 +11,7 @@ export async function encrypt(payload: any){
     return await new SignJWT(payload)
     .setProtectedHeader({alg: 'HS256'})
     .setIssuedAt()
-    .setExpirationTime('20 seconds')
+    .setExpirationTime('60 seconds')
     .sign(key)
 }
 
@@ -23,14 +23,14 @@ export async function decrypt(input: string): Promise<any> {
 
 export async function login (formData: FormData){
     //verify credientials and get the user
-    const user = { email: formData.get('email'), password: formData.get('password'), name:'John'};
+    const user = { name: formData.get('name'),email: formData.get('email'), password: formData.get('password')};
 
-     if(user.email !== process.env.USER_EMAIL || user.password !== process.env.USER_PASSWORD){
+     if(user.name !== process.env.USER_NAME ||user.email !== process.env.USER_EMAIL || user.password !== process.env.USER_PASSWORD){
         return false;
-        
     }
+
     //create the seesion
-    const expires = new Date(Date.now() + 10 * 1000);
+    const expires = new Date(Date.now() + 100 * 1000);
     const session = await encrypt({user, expires})
 
     //save the session in a cookie
@@ -54,7 +54,7 @@ export async function updateSession(request: NextRequest){
 
     //refresh the sesion so it doesn't expire
     const parsed = await decrypt(session);
-    parsed.expires = new Date(Date.now() + 10 * 1000);
+    parsed.expires = new Date(Date.now() + 100 * 1000);
     const res = NextResponse.next();
     res.cookies.set({
         name: 'session',
