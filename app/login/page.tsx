@@ -27,7 +27,7 @@ export default async function Login() {
       }}>
         <button type="submit">Logout</button>
       </form>
-      <pre>{JSON.stringify(session,null,2)}</pre>
+      {/* <pre>{JSON.stringify(session,null,2)}</pre> */}
     </section>
   );
 }
