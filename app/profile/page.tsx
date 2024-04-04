@@ -8,7 +8,11 @@ export default async function Profile() {
   console.log(user)
   return (
     <section>
-      <h1>Hello User</h1>
+      <h1>Hello {user.name}</h1>
+      <h3>User Information</h3>
+      <div>
+        <h4>Email {user.email}</h4>
+      </div>
       <form action={async (formdata)=>{
         'use server'
         await logout()
