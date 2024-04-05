@@ -14,7 +14,7 @@ export default async function Home() {
       <div className="max-w-md">
         <h1 className="mb-5 text-5xl font-bold">Welcome To The Site</h1>
         <p className="mb-5">Through this site I integrated user authentication functionality using if statements and environmental variables to ensure secure access to user profiles.Enhance the user experience by providing intuitive navigation between pages.</p>
-        <button className="btn btn-primary"><Link href={"/profile"}><strong>View Profile</strong></Link></button>
+        <Link className="btn btn-primary" href={"/profile"}><strong>View Profile</strong></Link>
       </div>
     </div>
   </div>
