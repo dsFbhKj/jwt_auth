@@ -1,15 +1,17 @@
 'use client'
 
 const Info = () => {
-    const handleClick = () => {
-    const modal = document.getElementById('my_modal_4') as HTMLDialogElement | null;
-    if (modal) {
-      modal.showModal();
-    }
-  };
   return (
     <>
-        <button className="btn" onClick={handleClick}>Welcome</button>
+        <button className="btn" 
+        onClick={()=>{const modal = document.getElementById('my_modal_4') as HTMLDialogElement | null;
+          if (modal) {
+          modal.showModal();
+          }}}
+        >
+          Welcome
+        </button>
+
         <dialog id="my_modal_4" className="modal">
           <div className="modal-box w-11/12 max-w-5xl">
             <h3 className="font-bold text-lg">Login Page</h3>
