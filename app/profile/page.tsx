@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import {getSession, logout} from '../lib';
+import Image from 'next/image'
 
 export default async function Profile() {
   const session = await getSession();
@@ -10,7 +11,8 @@ export default async function Profile() {
   return (
     <section>
       <div className="card card-side bg-base-100 shadow-xl">
-      <figure><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/9-94702_user-outline-icon-clipart-png-download-profile-icon.png" alt="User"/></figure>
+      <figure><Image src="https://upload.wikimedia.org/wikipedia/commons/1/14/9-94702_user-outline-icon-clipart-png-download-profile-icon.png" width={50}
+      height={50} alt="User"/></figure>
       <div className="card-body">
         <h2 className="card-title">Hello {user.name}</h2>
         <h5>User Information</h5>
